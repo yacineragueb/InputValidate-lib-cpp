@@ -70,6 +70,31 @@ public:
 		return Number;
 	}
 
+	static float ReadFloatNumber(string ErrorMessage = "Invalid Number, Enter again: ") {
+		float Number;
+
+		// You can use cin.fail()
+		while (!(cin >> Number)) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << ErrorMessage;
+			cin >> Number;
+		}
+
+		return Number;
+	}
+
+	static float ReadFloatNumberBetween(float From, float To, string ErrorMessage) {
+		float Number = ReadIntNumber();
+
+		while (!IsNumberBetween(Number, From, To)) {
+			cout << ErrorMessage;
+			Number = ReadIntNumber();
+		}
+
+		return Number;
+	}
+
 	static double ReadDblNumber(string ErrorMessage = "Invalid Number, Enter again: ") {
 		double Number;
 
@@ -96,6 +121,14 @@ public:
 
 	static bool IsValideDate(clsDate Date) {
 		return clsDate::IsValidDate(Date);
+	}
+
+	static string ReadString() {
+		string S1 = "";
+
+		// Usage of ws: extract all the whitespace character
+		getline(cin >> ws, S1);
+		return S1;
 	}
 };
 
