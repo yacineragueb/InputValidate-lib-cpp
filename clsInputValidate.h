@@ -45,6 +45,31 @@ public:
 		return false;
 	}
 
+	static short ReadShortNumber(string ErrorMessage = "Invalid Number, Enter again: ") {
+		short Number;
+
+		// You can use cin.fail()
+		while (!(cin >> Number)) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << ErrorMessage;
+			cin >> Number;
+		}
+
+		return Number;
+	}
+
+	static short ReadShortNumberBetween(short From, short To, string ErrorMessage) {
+		short Number = ReadShortNumber();
+
+		while (!IsNumberBetween(Number, From, To)) {
+			cout << ErrorMessage;
+			Number = ReadIntNumber();
+		}
+
+		return Number;
+	}
+
 	static int ReadIntNumber(string ErrorMessage = "Invalid Number, Enter again: ") {
 		int Number;
 
