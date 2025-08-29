@@ -5,8 +5,8 @@ using namespace std;
 
 int main()
 {
-    cout << clsInputValidate::IsNumberBetween(5, 1, 10) << endl;
-    cout << clsInputValidate::IsNumberBetween(5.5, 1.3, 10.8) << endl;
+    cout << clsInputValidate::IsNumberBetween<int>(5, 1, 10) << endl;
+    cout << clsInputValidate::IsNumberBetween<float>(5.5, 1.3, 10.8) << endl;
 
     cout << clsInputValidate::IsDateBetween(clsDate(),
         clsDate(8, 27, 2025),

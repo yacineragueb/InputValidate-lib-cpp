@@ -6,21 +6,9 @@
 class clsInputValidate
 {
 public:
-	static bool IsNumberBetween(short Number, short From, short To) {
+	template <typename T> static bool IsNumberBetween(T Number, T From, T To) {
 		return Number >= From && Number <= To;
-	}
-
-	static bool IsNumberBetween(int Number, int From, int To) {
-		return Number >= From && Number <= To;
-	}
-
-	static bool IsNumberBetween(float Number, float From, float To) {
-		return Number >= From && Number <= To;
-	}
-
-	static bool IsNumberBetween(double Number, double From, double To) {
-		return Number >= From && Number <= To;
-	}
+	 }
 
 	static bool IsDateBetween(clsDate Date, clsDate From, clsDate To)
 	{
@@ -62,7 +50,7 @@ public:
 	static short ReadShortNumberBetween(short From, short To, string ErrorMessage) {
 		short Number = ReadShortNumber();
 
-		while (!IsNumberBetween(Number, From, To)) {
+		while (!IsNumberBetween<short>(Number, From, To)) {
 			cout << ErrorMessage;
 			Number = ReadIntNumber();
 		}
@@ -87,7 +75,7 @@ public:
 	static int ReadIntNumberBetween(int From, int To, string ErrorMessage) {
 		int Number = ReadIntNumber();
 
-		while (!IsNumberBetween(Number, From, To)) {
+		while (!IsNumberBetween<int>(Number, From, To)) {
 			cout << ErrorMessage;
 			Number = ReadIntNumber();
 		}
@@ -112,7 +100,7 @@ public:
 	static float ReadFloatNumberBetween(float From, float To, string ErrorMessage) {
 		float Number = ReadIntNumber();
 
-		while (!IsNumberBetween(Number, From, To)) {
+		while (!IsNumberBetween<float>(Number, From, To)) {
 			cout << ErrorMessage;
 			Number = ReadIntNumber();
 		}
@@ -133,10 +121,10 @@ public:
 		return Number;
 	}
 
-	static int ReadDblNumberBetween(double From, double To, string ErrorMessage) {
+	static double ReadDblNumberBetween(double From, double To, string ErrorMessage) {
 		double Number = ReadDblNumber();
 
-		while (!IsNumberBetween(Number, From, To)) {
+		while (!IsNumberBetween<double>(Number, From, To)) {
 			cout << ErrorMessage;
 			Number = ReadDblNumber();
 		}
